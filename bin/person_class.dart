@@ -34,6 +34,7 @@ class Student extends Person {
   }
 
   addCourseGrade(String courseName, int grade) {
+    numCourses++;
     courses.add(courseName);
     grades.add(grade);
   }
@@ -71,6 +72,7 @@ class Teacher extends Person {
       return false;
     } else {
       courses.add(courseName);
+      numOfCourse++;
       return true;
     }
   }
@@ -79,6 +81,7 @@ class Teacher extends Person {
     if (courses.contains(courseName)) {
       courses.remove(courseName);
       return true;
+      numOfCourse--;
     } else {
       return false;
     }
