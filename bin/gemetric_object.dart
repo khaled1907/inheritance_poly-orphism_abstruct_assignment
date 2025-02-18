@@ -1,3 +1,5 @@
+import 'dart:math';
+
 abstract class GeometricObject {
   String color = "white";
   bool filled = false;
@@ -22,7 +24,8 @@ class Triangle extends GeometricObject {
       {required this.side1, required this.side2, required this.side3});
 
   getArea() {
-    return 0.5 * side3 * side2;
+    double s = (side1 + side2 + side3) / 2;
+    return sqrt(s * (s - side1) * (s - side2) * (s - side3));
   }
 
   @override
@@ -52,7 +55,8 @@ class Rectangle extends GeometricObject {
 main() {
   Triangle triangle = Triangle();
   Rectangle rectangle = Rectangle();
-  GeometricObject triangle2 = Triangle.specified(side1: 10, side2: 20, side3: 30);
+  GeometricObject triangle2 =
+      Triangle.specified(side1: 10, side2: 20, side3: 30);
   Rectangle rectangle2 = Rectangle.specified(width: 5, height: 6);
   print(triangle.getArea());
   print(triangle.toString());
